@@ -8,7 +8,7 @@ const UserCntrl = {
     newUser.password = req.body.password;
     newUser.role = 'admin';
 
-    newUser.save(() => {
+    newUser.save((err) => {
       if(err){
         return res.status(500).send(err);
       }

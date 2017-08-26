@@ -2,15 +2,16 @@ const Book = require('../models/book.js');
 
 const BookController = {
   create: (req, res) => {
+    console.log('THE BODY IS: ', req.body);
     const newBook = new Book();
     newBook.title = req.body.title;
     newBook.author = req.body.author;
     newBook.synopsis = req.body.synopsis;
-    newBook.borrowed = req.body.borrowed;
+    newBook.borrowed = false;
     newBook.date_borrowed = null;
     newBook.date_returned = null;
 
-    newBook.save(() => {
+    newBook.save((err) => {
       if (err) {
         return res.status(500).send(err);
       }
@@ -33,7 +34,7 @@ const BookController = {
       book.date_borrowed = req.body.dateOut;
       book.date_returned = req.body.dateIn;
 
-      book.save(() => {
+      book.save((err) => {
         if (err) {
           return res.status(500).send(err);
         }
