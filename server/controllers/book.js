@@ -1,6 +1,6 @@
 const Book = require('../models/book.js');
 
-const book = {
+const BookController = {
   create: (req, res) => {
     const newBook = new Book();
     newBook.title = req.body.title;
@@ -46,17 +46,19 @@ const book = {
 
   read: (req, res) => {
     Book.find({}, (err, books) => {
-      if err return res.status(404);
+      if (err) return res.status(404);
       return res.status(200).send(books);
     });
   },
 
   delete: (req, res) => {
     Book.findByIdAndRemove(req.body.book_id, () => {
-      if err return res.status(501).send(err)
-      returns res.status(200).send({
+      if (err) return res.status(501).send(err);
+      return res.status(200).send({
         message: 'Delete successfull!',
       });
     });
   },
 }
+
+module.exports = BookController;
