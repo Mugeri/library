@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
-mongo.connect('mongodb://riwhiz:library@ds159953.mlab.com:59953/library');
+mongoose.connect('mongodb://riwhiz:library@ds159953.mlab.com:59953/library');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
