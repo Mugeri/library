@@ -2,7 +2,6 @@ const Book = require('../models/book.js');
 
 const BookController = {
   create: (req, res) => {
-    console.log('THE BODY IS: ', req.body);
     const newBook = new Book();
     newBook.title = req.body.title;
     newBook.author = req.body.author;
@@ -23,7 +22,7 @@ const BookController = {
 
   update: (req, res) => {
     Book
-    .findById(req.body.book_id, (err, book) => {
+    .findById(req.params.id, (err, book) => {
       if (err) {
         return res.status(404);
       }
@@ -53,7 +52,7 @@ const BookController = {
   },
 
   delete: (req, res) => {
-    Book.findByIdAndRemove(req.body.book_id, () => {
+    Book.findByIdAndRemove(req.params.id, (err) => {
       if (err) return res.status(501).send(err);
       return res.status(200).send({
         message: 'Delete successfull!',
