@@ -6,11 +6,17 @@
     "react-scripts": "1.0.11"
   },
   "dependencies": {
+    "body-parser": "^1.17.2",
+    "concurrently": "^3.5.0",
+    "cors": "^2.8.4",
+    "express": "^4.15.4",
+    "mongoose": "^4.11.8",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"react-scripts start\" \"node main.js\"",
+    "server": "node main.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
